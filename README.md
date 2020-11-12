@@ -1,5 +1,5 @@
 # effectiveShellShocker
-This is a Python script that tests for http shellshocker vulnerability. If it exists, it allows you to attack it and to run commands remotely.
+This is a Python script that tests for http shellshocker vulnerability. If it exists, it allows you to run commands remotely.
 
 Simple Usage:
 ```bash
