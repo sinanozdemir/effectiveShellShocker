@@ -17,6 +17,6 @@ python3 effectiveShellShocker.py attack http://172.16.80.22 /cgi-bin /calendar.c
 ```
 ![Attack](Images/attack.png)
 
-![Reverse Shell](Images/revershell.png)
+![Reverse Shell](Images/reverseshell.png)
 
 Thank you
